@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شبکه</title>
+<style>
+  :root {
+    --deep-teal: #778090;
+    --soft-teal: #4a8080;
+    --bone: #FFFFFF;
+    --ink: #1c2a2a;
+    --accent: #c96f4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tahoma', 'Vazirmatn', sans-serif;
+    background: var(--bone);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  header {
+    background: var(--deep-teal);
+    color: white;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 24px;
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    padding: 80px 6% 60px;
+    max-width: 720px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    color: var(--deep-teal);
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .products {
+    padding: 60px 6%;
+    background: white;
+  }
+
+  .products h2 {
+    color: var(--deep-teal);
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    border: 1px solid #e0dcd3;
+    padding: 24px;
+  }
+
+  .product-card h3 {
+    color: var(--deep-teal);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+
+  .product-card p {
+    color: #666;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    padding: 30px 6%;
+    background: var(--deep-teal);
+    color: #cde;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+@media (max-width: 600px) {
+ .hero h1 {
+    font-size: 1.6rem;
+}
+.hero { 
+   padding: 40px 6% 30px;
+}
+header {
+   flex-direction: column;
+   text-align: center;
+}
+nav a {
+ margin: 0 10px;
+   }
+}
+
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">BA.SH</div>
+    <nav>
+      <a href="#محصولات">محصولات</a>
+      <a href="#تماس">تماس با ما</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>تجهیزات شبکه با کیفیت، برای آفیس و منزل شما</h1>
+    <p>بیش از هفت سال تجربه در تأمین و فروش تجهیزات شبکه  معتبر، با مشاوره‌ی تخصصی برای انتخاب درست.</p>
+    <a href="#محصولات" class="btn">مشاهده محصولات</a>
+  </section>
+
+  <section class="products" id="محصولات">
+    <h2>محصولات پرفروش</h2>
+    <div class="product-grid">
+         
+      <div class="product-card">
+      <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <h3>سرور</h3>
+           <p>نصب و راه اندازی</p>
+      </div>
+     
+     <div class="product-card">
+     <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <h3>روتر.</h3>
+        <p>روتر بی سیم</p>
+      </div>
+     
+      <div class="product-card">
+      <img src="rak.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <h3>رک شبکه</h3>
+        <p>ایستاده .دیواری و اوت دور.</p>
+      </div>
+      
+      <div class="product-card">
+      <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <h3>کابل شبکه</h3>
+        <p>کابل مسی</p>
+      </div>
+      
+      <div class="product-card">
+      <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <h3>سوکت  شبکه</h3>
+        <p>بسته 100 عددی</p>
+    </div>
+    </div>
+  </section>
+
+  <footer id="تماس">
+    <p>BA.SH — تماس: 021-00000000</p>
+  </footer>
+
+</body>
+</html>

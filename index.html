@@ -4,19 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>شبکه</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --deep-teal: #778090;
     --soft-teal: #4a8080;
     --bone: #FFFFFF;
     --ink: #1c2a2a;
-    --accent: #6495ED;
+    --accent: #4169E1;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Tahoma', 'Vazirmatn', sans-serif;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
     background: var(--bone);
     color: var(--ink);
     line-height: 1.7;
@@ -68,6 +69,11 @@
     border-radius: 4px;
     text-decoration: none;
     font-size: 1rem;
+    transition: background 0.2s;
+  }
+
+  .btn:hover {
+    background: #a85a3a;
   }
 
   .products {
@@ -79,6 +85,9 @@
     color: var(--deep-teal);
     margin-bottom: 30px;
     font-size: 1.6rem;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
   }
 
   .product-grid {
@@ -90,6 +99,14 @@
   .product-card {
     border: 1px solid #e0dcd3;
     padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
   }
 
   .product-card h3 {
@@ -110,32 +127,79 @@
     text-align: center;
     font-size: 0.9rem;
   }
-@media (max-width: 600px) {
- .hero h1 {
-    font-size: 1.6rem;
-}
-.hero { 
-   padding: 40px 6% 30px;
-}
-header {
-   flex-direction: column;
-   text-align: center;
-}
-nav a {
- margin: 0 10px;
-   }
-}
 
+  @media (max-width: 600px) {
+    .hero h1 {
+      font-size: 1.6rem;
+    }
+    .hero { 
+      padding: 40px 6% 30px;
+    }
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    .menu-toggle {
+      display: block;
+    }
+    nav#navMenu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 16px;
+    }
+    nav#navMenu.open {
+      display: flex;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero h1 {
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
+
+  .hero p {
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  }
+
+  .hero .btn {
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+  }
 </style>
 </head>
 <body>
 
   <header>
     <div class="logo">BA.SH</div>
-    <nav>
-      <a href="contact.html">تماس با ما</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="navMenu">
       <a href="#محصولات">محصولات</a>
-      
+      <a href="contact.html">تماس با ما</a>
     </nav>
   </header>
 
@@ -148,42 +212,49 @@ nav a {
   <section class="products" id="محصولات">
     <h2>محصولات </h2>
     <div class="product-grid">
-         
+
       <div class="product-card">
       <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>سرور</h3>
-           <p>نصب و راه اندازی</p>
+        <p>نصب و راه اندازی</p>
       </div>
-     
-     <div class="product-card">
-     <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+
+      <div class="product-card">
+      <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>روتر.</h3>
         <p>روتر بی سیم</p>
       </div>
-     
+
       <div class="product-card">
       <img src="rak.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>رک شبکه</h3>
         <p>ایستاده .دیواری و اوت دور.</p>
       </div>
-      
+
       <div class="product-card">
       <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>کابل شبکه</h3>
         <p>کابل مسی</p>
       </div>
-      
+
       <div class="product-card">
       <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>سوکت  شبکه</h3>
         <p>بسته 100 عددی</p>
-    </div>
+      </div>
+
     </div>
   </section>
 
   <footer>
     <p>BA.SH</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>

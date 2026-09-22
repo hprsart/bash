@@ -26,6 +26,40 @@
     line-height: 1.7;
   }
 
+  .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e0dcd3;
+    border-top: 5px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   header {
     background: var(--deep-teal);
     color: white;
@@ -260,6 +294,10 @@
 </head>
 <body>
 
+  <div id="loader" class="loader">
+    <div class="spinner"></div>
+  </div>
+
   <header>
     <div class="logo">BA.SH</div>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -341,9 +379,10 @@
     function closeModal() {
       document.getElementById('productModal').classList.remove('open');
     }
+
     window.addEventListener('load', function() {
-  document.getElementById('loader').classList.add('hidden');
-});
+      document.getElementById('loader').classList.add('hidden');
+    });
   </script>
 
 </body>

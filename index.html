@@ -33,9 +33,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-      position: sticky;
-  top: 0;
-  z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   header .logo {
@@ -52,7 +52,7 @@
 
   .hero {
     padding: 80px 6% 60px;
-      background: linear-gradient(135deg, #e8ecf5 0%, #c9d6f0 100%);
+    background: linear-gradient(135deg, #e8ecf5 0%, #c9d6f0 100%);
   }
 
   .hero h1 {
@@ -108,6 +108,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
   }
 
   .product-card:hover {
@@ -124,6 +125,48 @@
   .product-card p {
     color: #666;
     font-size: 0.95rem;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal.open {
+    display: flex;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 32px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+  }
+
+  .modal-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
   }
 
   footer {
@@ -220,35 +263,32 @@
     <h2>محصولات </h2>
     <div class="product-grid">
 
-      <div class="product-card">
-      <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
+      <div class="product-card" onclick="openModal('سرور', 'سرور HP با قابلیت نصب و راه‌اندازی حرفه‌ای، مناسب برای دیتاسنتر و آفیس‌های بزرگ.', 'server.jpg')">
+        <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>سرور</h3>
         <p>نصب و راه اندازی</p>
       </div>
 
-      <div class="product-card">
-      <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+      <div class="product-card" onclick="openModal('روتر شبکه', 'روتر بی‌سیم با پوشش قوی و سرعت بالا، مناسب برای منزل و آفیس.', 'router.jpg')">
+        <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>روتر.</h3>
         <p>روتر بی سیم</p>
       </div>
 
-      <div class="product-card">
-      <img src="rak1.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-
-
-        
+      <div class="product-card" onclick="openModal('رک شبکه', 'رک شبکه در انواع ایستاده، دیواری و اوت‌دور، مناسب برای نگهداری تجهیزات شبکه.', 'rak1.jpg')">
+        <img src="rak1.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>رک شبکه</h3>
         <p>ایستاده .دیواری و اوت دور.</p>
       </div>
 
-      <div class="product-card">
-      <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+      <div class="product-card" onclick="openModal('کابل شبکه', 'کابل شبکه‌ی مسی با کیفیت بالا، مناسب برای انتقال پایدار داده.', 'cable.jpg')">
+        <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>کابل شبکه</h3>
         <p>کابل مسی</p>
       </div>
 
-      <div class="product-card">
-      <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+      <div class="product-card" onclick="openModal('سوکت شبکه', 'سوکت شبکه در بسته‌ی 100 عددی، مناسب برای پروژه‌های نصب و راه‌اندازی.', 'soket.jpg')">
+        <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>سوکت  شبکه</h3>
         <p>بسته 100 عددی</p>
       </div>
@@ -260,9 +300,29 @@
     <p>BA.SH</p>
   </footer>
 
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
   <script>
     function toggleMenu() {
       document.getElementById('navMenu').classList.toggle('open');
+    }
+
+    function openModal(title, desc, img) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('productModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.remove('open');
     }
   </script>
 

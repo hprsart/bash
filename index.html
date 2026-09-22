@@ -410,6 +410,18 @@
     window.addEventListener('load', function() {
       document.getElementById('loader').classList.add('hidden');
     });
+    function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 300) {
+    btn.classList.add('show');
+  } else {
+    btn.classList.remove('show');
+  }
+});
   </script>
 <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
 </body>

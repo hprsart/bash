@@ -16,7 +16,9 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     font-family: 'Vazirmatn', Tahoma, sans-serif;
     background: var(--bone);
@@ -25,258 +27,335 @@
   }
 
   .loader {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: white; display: flex; justify-content: center; align-items: center;
-    z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
   }
-  .loader.hidden { opacity: 0; visibility: hidden; }
+
+  .loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
   .spinner {
-    width: 48px; height: 48px; border: 5px solid #e0dcd3;
-    border-top: 5px solid var(--accent); border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e0dcd3;
+    border-top: 5px solid var(--accent);
+    border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   header {
-    background: var(--deep-teal); color: white; padding: 20px 6%;
-    display: flex; justify-content: space-between; align-items: center;
-    position: sticky; top: 0; z-index: 100;
+    background: var(--deep-teal);
+    color: white;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  header .logo { font-size: 1.4rem; font-weight: bold; }
-  nav a {
-    color: white; text-decoration: none; margin-right: 24px; font-size: 0.95rem;
-    position: relative; padding-bottom: 4px;
-  }
-  nav a::after {
-    content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 2px;
-    background: white; transition: width 0.3s ease;
-  }
-  nav a:hover::after { width: 100%; }
 
-  .hero { padding: 80px 6% 60px; background: linear-gradient(135deg, #e8ecf5 0%, #c9d6f0 100%); }
-  .hero h1 { font-size: 2.4rem; color: var(--deep-teal); margin-bottom: 20px; }
-  .hero p { font-size: 1.1rem; color: #444; margin-bottom: 30px; }
+  header .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 24px;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  .hero {
+    padding: 80px 6% 60px;
+    background: linear-gradient(135deg, #e8ecf5 0%, #c9d6f0 100%);
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    color: var(--deep-teal);
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 30px;
+  }
 
   .btn {
-    display: inline-block; background: var(--accent); color: white; padding: 12px 28px;
-    border-radius: 4px; text-decoration: none; font-size: 1rem; transition: background 0.2s;
-  }
-  .btn:hover { background: #a85a3a; }
-
-  .products { padding: 60px 6%; background: white; }
-  .products h2 {
-    color: var(--deep-teal); margin-bottom: 30px; font-size: 1.6rem;
-    padding-bottom: 12px; border-bottom: 2px solid var(--accent); display: inline-block;
-  }
-  .product-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;
-  }
-  .product-card {
-    border: 1px solid #e0dcd3; padding: 24px; border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-  .product-card:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-  .product-card h3 { color: var(--deep-teal); margin-bottom: 8px; font-size: 1.1rem; }
-  .product-card p { color: #666; font-size: 0.95rem; }
-
-  .testimonials { padding: 60px 6%; background: #f7f8fa; }
-  .testimonials h2 {
-    color: var(--deep-teal); margin-bottom: 30px; font-size: 1.6rem;
-    padding-bottom: 12px; border-bottom: 2px solid var(--accent); display: inline-block;
-  }
-  .testimonial-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;
-  }
-  .testimonial-card { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .testimonial-stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 12px; }
-  .testimonial-text { color: #555; font-size: 0.95rem; margin-bottom: 16px; }
-  .testimonial-name { font-weight: bold; color: var(--deep-teal); font-size: 0.9rem; }
-
-  .modal {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); z-index: 200; justify-content: center; align-items: center;
-  }
-  .modal.open { display: flex; }
-  .modal-content {
-    background: white; padding: 32px; border-radius: 12px; max-width: 400px;
-    width: 90%; text-align: center; position: relative;
-  }
-  .modal-content img { width: 100%; border-radius: 8px; margin-bottom: 16px; }
-  .modal-close { position: absolute; top: 12px; left: 16px; font-size: 1.5rem; cursor: pointer; color: #999; }
-
-  .back-to-top {
-    position: fixed; bottom: 24px; left: 24px; width: 44px; height: 44px;
-    border-radius: 50%; background: var(--accent); color: white; border: none;
-    font-size: 1.3rem; cursor: pointer; display: none; align-items: center;
-    justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 150;
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
     transition: background 0.2s;
   }
-  .back-to-top.show { display: flex; }
-  .back-to-top:hover { background: #a85a3a; }
 
-  footer { padding: 30px 6%; background: var(--deep-teal); color: #cde; text-align: center; font-size: 0.9rem; }
+  .btn:hover {
+    background: #a85a3a;
+  }
+
+  .products {
+    padding: 60px 6%;
+    background: white;
+  }
+
+  .products h2 {
+    color: var(--deep-teal);
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    border: 1px solid #e0dcd3;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  }
+
+  .product-card h3 {
+    color: var(--deep-teal);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+
+  .product-card p {
+    color: #666;
+    font-size: 0.95rem;
+  }
+
+  .testimonials {
+    padding: 60px 6%;
+    background: #f7f8fa;
+  }
+
+  .testimonials h2 {
+    color: var(--deep-teal);
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .testimonial-stars {
+    color: #f5a623;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-text {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-name {
+    font-weight: bold;
+    color: var(--deep-teal);
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal.open {
+    display: flex;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 32px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+  }
+
+  .modal-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 150;
+    transition: background 0.2s;
+  }
+
+  .back-to-top.show {
+    display: flex;
+  }
+
+  .back-to-top:hover {
+    background: #a85a3a;
+  }
+
+  footer {
+    padding: 30px 6%;
+    background: var(--deep-teal);
+    color: #cde;
+    text-align: center;
+    font-size: 0.9rem;
+  }
 
   @media (max-width: 600px) {
-    .hero h1 { font-size: 1.6rem; }
-    .hero { padding: 40px 6% 30px; }
-    header { flex-direction: column; text-align: center; }
-    nav a { margin: 0 10px; }
+    .hero h1 {
+      font-size: 1.6rem;
+    }
+    .hero { 
+      padding: 40px 6% 30px;
+    }
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+    }
   }
 
   .menu-toggle {
-    display: none; background: none; border: none; color: white;
-    font-size: 1.8rem; cursor: pointer;
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
   }
+
   @media (max-width: 600px) {
-    .menu-toggle { display: block; }
-    nav#navMenu {
-      display: none; flex-direction: column; width: 100%; margin-top: 16px;
+    .menu-toggle {
+      display: block;
     }
-    nav#navMenu.open { display: flex; }
+    nav#navMenu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 16px;
+    }
+    nav#navMenu.open {
+      display: flex;
+    }
   }
 
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .hero h1 { animation: fadeInUp 0.8s ease-out backwards; }
-  .hero p { animation: fadeInUp 0.8s ease-out 0.2s backwards; }
-  .hero .btn { animation: fadeInUp 0.8s ease-out 0.4s backwards; }
-</style>
-</head>
-<body>
 
-  <div id="loader" class="loader">
-    <div class="spinner"></div>
-  </div>
+  .hero h1 {
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
 
-  <header>
-    <div class="logo">BA.SH</div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="navMenu">
-      <a href="#محصولات">محصولات</a>
-      <a href="about.html">درباره ما</a>
-      <a href="contact.html">تماس با ما</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>تجهیزات شبکه با کیفیت، برای آفیس </h1>
-    <p> تأمین و فروش تجهیزات شبکه  معتبر، با مشاوره‌ی تخصصی برای انتخاب درست.</p>
-    <a href="#محصولات" class="btn">مشاهده محصولات</a>
-  </section>
-
-  <section class="products" id="محصولات">
-    <h2>محصولات </h2>
-    <div class="product-grid">
-
-      <div class="product-card" onclick="openModal('سرور', 'سرور HP با قابلیت نصب و راه‌اندازی حرفه‌ای، مناسب برای دیتاسنتر و آفیس‌های بزرگ.', 'server.jpg')">
-        <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>سرور</h3>
-        <p>نصب و راه اندازی</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('روتر شبکه', 'روتر بی‌سیم با پوشش قوی و سرعت بالا، مناسب برای منزل و آفیس.', 'router.jpg')">
-        <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>روتر.</h3>
-        <p>روتر بی سیم</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('رک شبکه', 'رک شبکه در انواع ایستاده، دیواری و اوت‌دور، مناسب برای نگهداری تجهیزات شبکه.', 'rak1.jpg')">
-        <img src="rak1.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>رک شبکه</h3>
-        <p>ایستاده .دیواری و اوت دور.</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('کابل شبکه', 'کابل شبکه‌ی مسی با کیفیت بالا، مناسب برای انتقال پایدار داده.', 'cable.jpg')">
-        <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>کابل شبکه</h3>
-        <p>کابل مسی</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('سوکت شبکه', 'سوکت شبکه در بسته‌ی 100 عددی، مناسب برای پروژه‌های نصب و راه‌اندازی.', 'soket.jpg')">
-        <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>سوکت  شبکه</h3>
-        <p>بسته 100 عددی</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="testimonials">
-    <h2>نظرات مشتریان</h2>
-    <div class="testimonial-grid">
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">کیفیت محصولات عالی بود و مشاوره‌ی خیلی خوبی برای انتخاب تجهیزات گرفتم. حتماً باز هم خرید می‌کنم.</p>
-        <div class="testimonial-name">علی رضایی</div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">سرعت تحویل خیلی خوب بود و تجهیزات دقیقاً همون چیزی بود که نیاز داشتم. ممنون از تیم خوبتون.</p>
-        <div class="testimonial-name">مریم احمدی</div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★☆</div>
-        <p class="testimonial-text">برخورد محترمانه و قیمت منصفانه. برای پروژه‌ی شبکه‌ی آفیسمون خیلی کمک‌مون کردن.</p>
-        <div class="testimonial-name">حسین کریمی</div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <p>BA.SH</p>
-  </footer>
-
-  <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
-
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <img id="modalImg" src="" alt="">
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
-    </div>
-  </div>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('open');
-    }
-
-    function openModal(title, desc, img) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
-      document.getElementById('modalImg').src = img;
-      document.getElementById('productModal').classList.add('open');
-    }
-
-    function closeModal() {
-      document.getElementById('productModal').classList.remove('open');
-    }
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    window.addEventListener('scroll', function() {
-      const btn = document.getElementById('backToTop');
-      if (window.scrollY > 300) {
-        btn.classList.add('show');
-      } else {
-        btn.classList.remove('show');
-      }
-    });
-
-    window.addEventListener('load', function() {
-      document.getElementById('loader').classList.add('hidden');
-    });
-  </script>
-
-</body>
-</html>
+  .hero p {
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  }

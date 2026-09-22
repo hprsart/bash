@@ -6,33 +6,6 @@
 <title>شبکه</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  .back-to-top {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: white;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 150;
-  transition: background 0.2s;
-}
-
-.back-to-top.show {
-  display: flex;
-}
-
-.back-to-top:hover {
-  background: #a85a3a;
-}
 
   :root {
     --deep-teal: #778090;
@@ -205,6 +178,51 @@
     font-size: 0.95rem;
   }
 
+  .testimonials {
+    padding: 60px 6%;
+    background: #f7f8fa;
+  }
+
+  .testimonials h2 {
+    color: var(--deep-teal);
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .testimonial-stars {
+    color: #f5a623;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-text {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-name {
+    font-weight: bold;
+    color: var(--deep-teal);
+    font-size: 0.9rem;
+  }
+
   .modal {
     display: none;
     position: fixed;
@@ -245,6 +263,34 @@
     font-size: 1.5rem;
     cursor: pointer;
     color: #999;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 150;
+    transition: background 0.2s;
+  }
+
+  .back-to-top.show {
+    display: flex;
+  }
+
+  .back-to-top:hover {
+    background: #a85a3a;
   }
 
   footer {
@@ -313,116 +359,3 @@
   .hero p {
     animation: fadeInUp 0.8s ease-out 0.2s backwards;
   }
-
-  .hero .btn {
-    animation: fadeInUp 0.8s ease-out 0.4s backwards;
-  }
-</style>
-</head>
-<body>
-
-  <div id="loader" class="loader">
-    <div class="spinner"></div>
-  </div>
-
-  <header>
-    <div class="logo">BA.SH</div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="navMenu">
-      <a href="#محصولات">محصولات</a>
-      <a href="about.html">درباره ما</a>
-      <a href="contact.html">تماس با ما</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>تجهیزات شبکه با کیفیت، برای آفیس </h1>
-    <p> تأمین و فروش تجهیزات شبکه  معتبر، با مشاوره‌ی تخصصی برای انتخاب درست.</p>
-    <a href="#محصولات" class="btn">مشاهده محصولات</a>
-  </section>
-
-  <section class="products" id="محصولات">
-    <h2>محصولات </h2>
-    <div class="product-grid">
-
-      <div class="product-card" onclick="openModal('سرور', 'سرور HP با قابلیت نصب و راه‌اندازی حرفه‌ای، مناسب برای دیتاسنتر و آفیس‌های بزرگ.', 'server.jpg')">
-        <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>سرور</h3>
-        <p>نصب و راه اندازی</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('روتر شبکه', 'روتر بی‌سیم با پوشش قوی و سرعت بالا، مناسب برای منزل و آفیس.', 'router.jpg')">
-        <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>روتر.</h3>
-        <p>روتر بی سیم</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('رک شبکه', 'رک شبکه در انواع ایستاده، دیواری و اوت‌دور، مناسب برای نگهداری تجهیزات شبکه.', 'rak1.jpg')">
-        <img src="rak1.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>رک شبکه</h3>
-        <p>ایستاده .دیواری و اوت دور.</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('کابل شبکه', 'کابل شبکه‌ی مسی با کیفیت بالا، مناسب برای انتقال پایدار داده.', 'cable.jpg')">
-        <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>کابل شبکه</h3>
-        <p>کابل مسی</p>
-      </div>
-
-      <div class="product-card" onclick="openModal('سوکت شبکه', 'سوکت شبکه در بسته‌ی 100 عددی، مناسب برای پروژه‌های نصب و راه‌اندازی.', 'soket.jpg')">
-        <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>سوکت  شبکه</h3>
-        <p>بسته 100 عددی</p>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <p>BA.SH</p>
-  </footer>
-
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <img id="modalImg" src="" alt="">
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
-    </div>
-  </div>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('open');
-    }
-
-    function openModal(title, desc, img) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
-      document.getElementById('modalImg').src = img;
-      document.getElementById('productModal').classList.add('open');
-    }
-
-    function closeModal() {
-      document.getElementById('productModal').classList.remove('open');
-    }
-
-    window.addEventListener('load', function() {
-      document.getElementById('loader').classList.add('hidden');
-    });
-    function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-window.addEventListener('scroll', function() {
-  const btn = document.getElementById('backToTop');
-  if (window.scrollY > 300) {
-    btn.classList.add('show');
-  } else {
-    btn.classList.remove('show');
-  }
-});
-  </script>
-<button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
-</body>
-</html>

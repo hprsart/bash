@@ -52,20 +52,21 @@
     padding-bottom: 4px;
   }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 2px;
-  background: white;
-  transition: width 0.3s ease;
-}
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
 
-nav a:hover::after {
-  width: 100%;
-}
+  nav a:hover::after {
+    width: 100%;
+  }
+
   .hero {
     padding: 80px 6% 60px;
     background: linear-gradient(135deg, #e8ecf5 0%, #c9d6f0 100%);

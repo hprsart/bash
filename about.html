@@ -6,38 +6,46 @@
 <title>درباره ما | BA.SH</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
- html {
-  scroll-behavior: smooth;
-}
+
   :root {
     --deep-teal: #778090;
+    --soft-teal: #4a8080;
     --bone: #FFFFFF;
     --ink: #1c2a2a;
     --accent: #4169E1;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Vazirmatn', Tahoma, sans-serif;
     background: var(--bone);
     color: var(--ink);
     line-height: 1.7;
   }
+
   header {
-    background: var(--deep-teal);
-    color: white;
-    padding: 20px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
+    background: var(--deep-teal); color: white; padding: 20px 6%;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
   }
+  header .logo { font-size: 1.4rem; font-weight: bold; }
   nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 24px;
+    color: white; text-decoration: none; margin-right: 24px; font-size: 0.95rem;
+    position: relative; padding-bottom: 4px;
   }
+  nav a::after {
+    content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 2px;
+    background: white; transition: width 0.3s ease;
+  }
+  nav a:hover::after { width: 100%; }
+
+  #langToggle {
+    background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 4px; padding: 6px 14px; font-size: 0.85rem; cursor: pointer;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+  }
+
   .about {
     padding: 80px 6%;
     max-width: 700px;
@@ -52,12 +60,12 @@
     font-size: 1.05rem;
     color: #444;
   }
-  footer {
-    padding: 30px 6%;
-    background: var(--deep-teal);
-    color: #cde;
-    text-align: center;
-    font-size: 0.9rem;
+
+  footer { padding: 30px 6%; background: var(--deep-teal); color: #cde; text-align: center; font-size: 0.9rem; }
+
+  @media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; gap: 10px; }
+    nav a { margin: 0 10px; }
   }
 </style>
 </head>
@@ -65,23 +73,40 @@
 
   <header>
     <div class="logo">BA.SH</div>
+    <button id="langToggle" onclick="toggleLang()">EN</button>
     <nav>
-      <a href="index.html">خانه</a>
-      <a href="about.html">درباره ما</a>
-      <a href="contact.html">تماس با ما</a>
+      <a href="index.html" data-fa="خانه" data-en="Home">خانه</a>
+      <a href="about.html" data-fa="درباره ما" data-en="About Us">درباره ما</a>
+      <a href="contact.html" data-fa="تماس با ما" data-en="Contact Us">تماس با ما</a>
     </nav>
   </header>
 
   <section class="about">
-    <h1>درباره‌ی ما</h1>
-    <p>BA.SH با هدف ارائه‌ی تجهیزات شبکه با کیفیت و قیمت مناسب برای کسب‌وکارها و منازل تاسیس شده است.</p>
-    <p>ما با تکیه بر تجربه‌ی چندساله در حوزه‌ی فروش تجهیزات فنی، تلاش می‌کنیم بهترین مشاوره و محصول را به مشتریان خود ارائه دهیم.</p>
-    <p>تیم ما آماده است تا در انتخاب تجهیزات مناسب برای شبکه‌ی شما، از مشاوره تا نصب و راه‌اندازی، همراهتان باشد.</p>
+    <h1 data-fa="درباره ما" data-en="About Us">درباره ما</h1>
+    <p data-fa="BA.SH با هدف ارائه‌ی تجهیزات شبکه با کیفیت و قیمت مناسب برای کسب‌وکارها و منازل تاسیس شده است." data-en="BA.SH was founded with the goal of providing quality, affordable network equipment for businesses and homes.">BA.SH با هدف ارائه‌ی تجهیزات شبکه با کیفیت و قیمت مناسب برای کسب‌وکارها و منازل تاسیس شده است.</p>
+    <p data-fa="ما با تکیه بر تجربه‌ی چندساله در حوزه‌ی فروش تجهیزات فنی، تلاش می‌کنیم بهترین مشاوره و محصول را به مشتریان خود ارائه دهیم." data-en="Drawing on years of experience in selling technical equipment, we strive to offer our customers the best consultation and products.">ما با تکیه بر تجربه‌ی چندساله در حوزه‌ی فروش تجهیزات فنی، تلاش می‌کنیم بهترین مشاوره و محصول را به مشتریان خود ارائه دهیم.</p>
+    <p data-fa="تیم ما آماده است تا در انتخاب تجهیزات مناسب برای شبکه‌ی شما، از مشاوره تا نصب و راه‌اندازی، همراهتان باشد." data-en="Our team is ready to support you in choosing the right equipment for your network, from consultation to installation and setup.">تیم ما آماده است تا در انتخاب تجهیزات مناسب برای شبکه‌ی شما، از مشاوره تا نصب و راه‌اندازی، همراهتان باشد.</p>
   </section>
 
   <footer>
     <p>BA.SH</p>
   </footer>
+
+  <script>
+    let currentLang = 'fa';
+    function applyLang(lang) {
+      document.querySelectorAll('[data-fa]').forEach(function(el) {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+      document.getElementById('langToggle').textContent = lang === 'fa' ? 'EN' : 'FA';
+    }
+    function toggleLang() {
+      currentLang = currentLang === 'fa' ? 'en' : 'fa';
+      applyLang(currentLang);
+    }
+  </script>
 
 </body>
 </html>

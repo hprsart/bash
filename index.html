@@ -68,6 +68,17 @@
     color: var(--deep-teal); margin-bottom: 30px; font-size: 1.6rem;
     padding-bottom: 12px; border-bottom: 2px solid var(--accent); display: inline-block;
   }
+  #searchInput {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 16px;
+  margin-bottom: 24px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  font-size: 0.95rem;
+}
   .product-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;
   }
@@ -175,6 +186,7 @@
 
   <section class="products" id="محصولات">
     <h2>محصولات </h2>
+    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="جستجوی محصول...">
     <div class="product-grid">
 
       <div class="product-card" onclick="openModal('سرور', 'سرور HP با قابلیت نصب و راه‌اندازی حرفه‌ای، مناسب برای دیتاسنتر و آفیس‌های بزرگ.', 'server.jpg')">
@@ -255,6 +267,18 @@
     function toggleMenu() {
       document.getElementById('navMenu').classList.toggle('open');
     }
+    function filterProducts() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.product-card');
+  cards.forEach(function(card) {
+    const title = card.querySelector('h3').textContent.toLowerCase();
+    if (title.includes(input)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
 
     function openModal(title, desc, img) {
       document.getElementById('modalTitle').textContent = title;

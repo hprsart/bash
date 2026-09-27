@@ -153,6 +153,12 @@
     display: none; background: none; border: none; color: white;
     font-size: 1.8rem; cursor: pointer;
   }
+
+  #langToggle {
+    background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 4px; padding: 6px 14px; font-size: 0.85rem; cursor: pointer;
+    font-family: 'Vazirmatn', Tahoma, sans-serif; margin-right: 16px;
+  }
   @media (max-width: 600px) {
     .menu-toggle { display: block; }
     nav#navMenu {
@@ -178,97 +184,98 @@
 
   <header>
     <div class="logo">BA.SH</div>
+    <button id="langToggle" onclick="toggleLang()">EN</button>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <nav id="navMenu">
-      <a href="#محصولات">محصولات</a>
-      <a href="about.html">درباره ما</a>
-      <a href="contact.html">تماس با ما</a>
+      <a href="#محصولات" data-fa="محصولات" data-en="Products">محصولات</a>
+      <a href="about.html" data-fa="درباره ما" data-en="About Us">درباره ما</a>
+      <a href="contact.html" data-fa="تماس با ما" data-en="Contact Us">تماس با ما</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>تجهیزات شبکه با کیفیت، برای آفیس </h1>
-    <p> تأمین و فروش تجهیزات شبکه  معتبر، با مشاوره‌ی تخصصی برای انتخاب درست.</p>
-    <a href="#محصولات" class="btn">مشاهده محصولات</a>
+    <h1 data-fa="تجهیزات شبکه با کیفیت، برای آفیس" data-en="Quality Network Equipment for Your Office">تجهیزات شبکه با کیفیت، برای آفیس</h1>
+    <p data-fa="تأمین و فروش تجهیزات شبکه معتبر، با مشاوره‌ی تخصصی برای انتخاب درست." data-en="Reliable network equipment supply and sales, with expert consultation to help you choose right."> تأمین و فروش تجهیزات شبکه  معتبر، با مشاوره‌ی تخصصی برای انتخاب درست.</p>
+    <a href="#محصولات" class="btn" data-fa="مشاهده محصولات" data-en="View Products">مشاهده محصولات</a>
   </section>
 
   <section class="products" id="محصولات">
-    <h2>محصولات </h2>
-    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="جستجوی محصول...">
+    <h2 data-fa="محصولات" data-en="Products">محصولات </h2>
+    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="جستجوی محصول..." data-fa-placeholder="جستجوی محصول..." data-en-placeholder="Search products...">
     <div class="product-grid">
 
-      <div class="product-card" onclick="openModal('سرور', 'سرور HP با قابلیت نصب و راه‌اندازی حرفه‌ای، مناسب برای دیتاسنتر و آفیس‌های بزرگ.', 'server.jpg')">
+      <div class="product-card" onclick="openModal('server')">
         <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>سرور</h3>
-        <p>نصب و راه اندازی</p>
+        <h3 data-fa="سرور" data-en="Server">سرور</h3>
+        <p data-fa="نصب و راه اندازی" data-en="Installation and Setup">نصب و راه اندازی</p>
       </div>
 
-      <div class="product-card" onclick="openModal('روتر شبکه', 'روتر بی‌سیم با پوشش قوی و سرعت بالا، مناسب برای منزل و آفیس.', 'router.jpg')">
-        <span class="badge">پرفروش</span>
+      <div class="product-card" onclick="openModal('router')">
+        <span class="badge" data-fa="پرفروش" data-en="Best Seller">پرفروش</span>
         <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>روتر.</h3>
-        <p>روتر بی سیم</p>
+        <h3 data-fa="روتر" data-en="Router">روتر.</h3>
+        <p data-fa="روتر بی سیم" data-en="Wireless Router">روتر بی سیم</p>
       </div>
 
-      <div class="product-card" onclick="openModal('رک شبکه', 'رک شبکه در انواع ایستاده، دیواری و اوت‌دور، مناسب برای نگهداری تجهیزات شبکه.', 'rak1.jpg')">
+      <div class="product-card" onclick="openModal('rack')">
         <img src="rak1.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>رک شبکه</h3>
-        <p>ایستاده .دیواری و اوت دور.</p>
+        <h3 data-fa="رک شبکه" data-en="Network Rack">رک شبکه</h3>
+        <p data-fa="ایستاده، دیواری و اوت دور" data-en="Standing, Wall-mounted and Outdoor">ایستاده .دیواری و اوت دور.</p>
       </div>
 
-      <div class="product-card" onclick="openModal('کابل شبکه', 'کابل شبکه‌ی مسی با کیفیت بالا، مناسب برای انتقال پایدار داده.', 'cable.jpg')">
+      <div class="product-card" onclick="openModal('cable')">
         <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>کابل شبکه</h3>
-        <p>کابل مسی</p>
+        <h3 data-fa="کابل شبکه" data-en="Network Cable">کابل شبکه</h3>
+        <p data-fa="کابل مسی" data-en="Copper Cable">کابل مسی</p>
       </div>
 
-      <div class="product-card" onclick="openModal('سوکت شبکه', 'سوکت شبکه در بسته‌ی 100 عددی، مناسب برای پروژه‌های نصب و راه‌اندازی.', 'soket.jpg')">
+      <div class="product-card" onclick="openModal('socket')">
         <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
-        <h3>سوکت  شبکه</h3>
-        <p>بسته 100 عددی</p>
+        <h3 data-fa="سوکت شبکه" data-en="Network Socket">سوکت  شبکه</h3>
+        <p data-fa="بسته 100 عددی" data-en="Pack of 100">بسته 100 عددی</p>
       </div>
 
     </div>
   </section>
 
   <section class="testimonials">
-    <h2>نظرات مشتریان</h2>
+    <h2 data-fa="نظرات مشتریان" data-en="Customer Reviews">نظرات مشتریان</h2>
     <div class="testimonial-grid">
 
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">کیفیت محصولات عالی بود و مشاوره‌ی خیلی خوبی برای انتخاب تجهیزات گرفتم. حتماً باز هم خرید می‌کنم.</p>
-        <div class="testimonial-name">علی رضایی</div>
+        <p class="testimonial-text" data-fa="کیفیت محصولات عالی بود و مشاوره‌ی خیلی خوبی برای انتخاب تجهیزات گرفتم. حتماً باز هم خرید می‌کنم." data-en="The product quality was excellent and I got great advice on choosing the right equipment. I'll definitely buy again.">کیفیت محصولات عالی بود و مشاوره‌ی خیلی خوبی برای انتخاب تجهیزات گرفتم. حتماً باز هم خرید می‌کنم.</p>
+        <div class="testimonial-name" data-fa="علی رضایی" data-en="Ali Rezaei">علی رضایی</div>
       </div>
 
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">سرعت تحویل خیلی خوب بود و تجهیزات دقیقاً همون چیزی بود که نیاز داشتم. ممنون از تیم خوبتون.</p>
-        <div class="testimonial-name">مریم احمدی</div>
+        <p class="testimonial-text" data-fa="سرعت تحویل خیلی خوب بود و تجهیزات دقیقاً همون چیزی بود که نیاز داشتم. ممنون از تیم خوبتون." data-en="Delivery was very fast and the equipment was exactly what I needed. Thanks to your great team.">سرعت تحویل خیلی خوب بود و تجهیزات دقیقاً همون چیزی بود که نیاز داشتم. ممنون از تیم خوبتون.</p>
+        <div class="testimonial-name" data-fa="مریم احمدی" data-en="Maryam Ahmadi">مریم احمدی</div>
       </div>
 
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★☆</div>
-        <p class="testimonial-text">برخورد محترمانه و قیمت منصفانه. برای پروژه‌ی شبکه‌ی آفیسمون خیلی کمک‌مون کردن.</p>
-        <div class="testimonial-name">حسین کریمی</div>
+        <p class="testimonial-text" data-fa="برخورد محترمانه و قیمت منصفانه. برای پروژه‌ی شبکه‌ی آفیسمون خیلی کمک‌مون کردن." data-en="Respectful service and fair pricing. They helped us a lot with our office network project.">برخورد محترمانه و قیمت منصفانه. برای پروژه‌ی شبکه‌ی آفیسمون خیلی کمک‌مون کردن.</p>
+        <div class="testimonial-name" data-fa="حسین کریمی" data-en="Hossein Karimi">حسین کریمی</div>
       </div>
 
     </div>
   </section>
 
   <section class="faq">
-    <h2>سوالات متداول</h2>
+    <h2 data-fa="سوالات متداول" data-en="Frequently Asked Questions">سوالات متداول</h2>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">آیا برای نصب تجهیزات هم خدمات دارید؟ <span>+</span></div>
-      <div class="faq-answer">بله، تیم ما نصب و راه‌اندازی کامل تجهیزات شبکه رو هم انجام می‌ده.</div>
+      <div class="faq-question" onclick="toggleFaq(this)"><span data-fa="آیا برای نصب تجهیزات هم خدمات دارید؟" data-en="Do you also provide installation services?">آیا برای نصب تجهیزات هم خدمات دارید؟</span> <span>+</span></div>
+      <div class="faq-answer" data-fa="بله، تیم ما نصب و راه‌اندازی کامل تجهیزات شبکه رو هم انجام می‌ده." data-en="Yes, our team also handles complete installation and setup of network equipment.">بله، تیم ما نصب و راه‌اندازی کامل تجهیزات شبکه رو هم انجام می‌ده.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">زمان تحویل سفارش چقدر است؟ <span>+</span></div>
-      <div class="faq-answer">بسته به نوع محصول، معمولاً بین ۲ تا ۵ روز کاری تحویل داده می‌شود.</div>
+      <div class="faq-question" onclick="toggleFaq(this)"><span data-fa="زمان تحویل سفارش چقدر است؟" data-en="How long does delivery take?">زمان تحویل سفارش چقدر است؟</span> <span>+</span></div>
+      <div class="faq-answer" data-fa="بسته به نوع محصول، معمولاً بین ۲ تا ۵ روز کاری تحویل داده می‌شود." data-en="Depending on the product, delivery usually takes 2 to 5 business days.">بسته به نوع محصول، معمولاً بین ۲ تا ۵ روز کاری تحویل داده می‌شود.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">آیا محصولات گارانتی دارند؟ <span>+</span></div>
-      <div class="faq-answer">بله، تمام محصولات ما شامل گارانتی رسمی هستند.</div>
+      <div class="faq-question" onclick="toggleFaq(this)"><span data-fa="آیا محصولات گارانتی دارند؟" data-en="Do products come with a warranty?">آیا محصولات گارانتی دارند؟</span> <span>+</span></div>
+      <div class="faq-answer" data-fa="بله، تمام محصولات ما شامل گارانتی رسمی هستند." data-en="Yes, all our products include an official warranty.">بله، تمام محصولات ما شامل گارانتی رسمی هستند.</div>
     </div>
   </section>
 
@@ -288,6 +295,33 @@
   </div>
 
   <script>
+    const products = {
+      server: { img: 'server.jpg', fa: { title: 'سرور', desc: 'سرور HP با قابلیت نصب و راه‌اندازی حرفه‌ای، مناسب برای دیتاسنتر و آفیس‌های بزرگ.' }, en: { title: 'Server', desc: 'HP server with professional installation and setup, suitable for data centers and large offices.' } },
+      router: { img: 'router.jpg', fa: { title: 'روتر شبکه', desc: 'روتر بی‌سیم با پوشش قوی و سرعت بالا، مناسب برای منزل و آفیس.' }, en: { title: 'Router', desc: 'High-power wireless router with strong coverage, suitable for home and office.' } },
+      rack: { img: 'rak1.jpg', fa: { title: 'رک شبکه', desc: 'رک شبکه در انواع ایستاده، دیواری و اوت‌دور، مناسب برای نگهداری تجهیزات شبکه.' }, en: { title: 'Network Rack', desc: 'Network racks available in standing, wall-mounted, and outdoor types, suitable for housing network equipment.' } },
+      cable: { img: 'cable.jpg', fa: { title: 'کابل شبکه', desc: 'کابل شبکه‌ی مسی با کیفیت بالا، مناسب برای انتقال پایدار داده.' }, en: { title: 'Network Cable', desc: 'High-quality copper network cable, suitable for stable data transfer.' } },
+      socket: { img: 'soket.jpg', fa: { title: 'سوکت شبکه', desc: 'سوکت شبکه در بسته‌ی 100 عددی، مناسب برای پروژه‌های نصب و راه‌اندازی.' }, en: { title: 'Network Socket', desc: 'Network sockets in packs of 100, suitable for installation projects.' } }
+    };
+
+    let currentLang = 'fa';
+
+    function applyLang(lang) {
+      document.querySelectorAll('[data-fa]').forEach(function(el) {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      document.querySelectorAll('[data-fa-placeholder]').forEach(function(el) {
+        el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+      document.getElementById('langToggle').textContent = lang === 'fa' ? 'EN' : 'FA';
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'fa' ? 'en' : 'fa';
+      applyLang(currentLang);
+    }
+
     function filterProducts() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const cards = document.querySelectorAll('.product-card');
@@ -310,10 +344,12 @@
       document.getElementById('navMenu').classList.toggle('open');
     }
 
-    function openModal(title, desc, img) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
-      document.getElementById('modalImg').src = img;
+    function openModal(id) {
+      const p = products[id];
+      const t = p[currentLang];
+      document.getElementById('modalTitle').textContent = t.title;
+      document.getElementById('modalDesc').textContent = t.desc;
+      document.getElementById('modalImg').src = p.img;
       document.getElementById('productModal').classList.add('open');
     }
 

@@ -79,6 +79,12 @@
   .product-card:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
   .product-card h3 { color: var(--deep-teal); margin-bottom: 8px; font-size: 1.1rem; }
   .product-card p { color: #666; font-size: 0.95rem; }
+  .product-card { position: relative; }
+  .badge {
+    position: absolute; top: -10px; right: -10px;
+    background: #e74c3c; color: white; font-size: 0.75rem; font-weight: bold;
+    padding: 4px 10px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
 
   .testimonials { padding: 60px 6%; background: #f7f8fa; }
   .testimonials h2 {
@@ -178,6 +184,7 @@
       </div>
 
       <div class="product-card" onclick="openModal('روتر شبکه', 'روتر بی‌سیم با پوشش قوی و سرعت بالا، مناسب برای منزل و آفیس.', 'router.jpg')">
+        <span class="badge">پرفروش</span>
         <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
         <h3>روتر.</h3>
         <p>روتر بی سیم</p>
@@ -211,19 +218,19 @@
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">کیفیت محصولات عالی بود و مشاوره‌ی خیلی خوبی برای انتخاب تجهیزات گرفتم. حتماً باز هم خرید می‌کنم.</p>
-        <div class="testimonial-name">AAA</div>
+        <div class="testimonial-name">علی رضایی</div>
       </div>
 
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">سرعت تحویل خیلی خوب بود و تجهیزات دقیقاً همون چیزی بود که نیاز داشتم. ممنون از تیم خوبتون.</p>
-        <div class="testimonial-name">BBB</div>
+        <div class="testimonial-name">مریم احمدی</div>
       </div>
 
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★☆</div>
         <p class="testimonial-text">برخورد محترمانه و قیمت منصفانه. برای پروژه‌ی شبکه‌ی آفیسمون خیلی کمک‌مون کردن.</p>
-        <div class="testimonial-name">CCC</div>
+        <div class="testimonial-name">حسین کریمی</div>
       </div>
 
     </div>

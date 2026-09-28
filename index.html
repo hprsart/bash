@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>شبکه</title>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<script>document.documentElement.classList.add('js');</script>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -233,6 +234,82 @@
   .hero h1 { animation: fadeInUp 0.8s ease-out backwards; }
   .hero p { animation: fadeInUp 0.8s ease-out 0.2s backwards; }
   .hero .btn { animation: fadeInUp 0.8s ease-out 0.4s backwards; }
+
+  /* ===== Modern layer: later rules override earlier ones ===== */
+  body { -webkit-font-smoothing: antialiased; }
+
+  @supports (backdrop-filter: blur(10px)) {
+    header {
+      background: color-mix(in srgb, var(--deep-teal) 82%, transparent);
+      backdrop-filter: saturate(160%) blur(12px);
+      -webkit-backdrop-filter: saturate(160%) blur(12px);
+    }
+  }
+  header .logo { letter-spacing: 1px; }
+  #langToggle, #themeToggle { border-radius: 999px; transition: background 0.2s; }
+  #langToggle:hover, #themeToggle:hover { background: rgba(255,255,255,0.28); }
+
+  .hero { position: relative; overflow: hidden; padding: 96px 6% 80px; }
+  .hero::before {
+    content: ''; position: absolute; top: -120px; left: -80px; width: 360px; height: 360px;
+    border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent), transparent 70%);
+  }
+  .hero > * { position: relative; }
+  .hero h1 { font-size: 3rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.5px; }
+  .hero p { font-size: 1.15rem; max-width: 560px; }
+
+  .btn {
+    border-radius: 999px; padding: 14px 32px; font-weight: 600;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent);
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  }
+  .btn:hover { background: var(--accent); filter: brightness(0.92); transform: translateY(-2px); }
+  .back-to-top:hover { background: var(--accent); filter: brightness(0.9); }
+
+  .products h2, .features h2, .testimonials h2, .faq h2 {
+    display: block; border-bottom: none; padding-bottom: 0;
+    font-size: 1.9rem; font-weight: 700; margin-bottom: 36px;
+  }
+  .products h2::after, .features h2::after, .testimonials h2::after, .faq h2::after {
+    content: ''; display: block; width: 56px; height: 4px; border-radius: 4px;
+    background: var(--accent); margin-top: 12px;
+  }
+
+  .product-card { border-radius: 16px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+  .product-card:hover { box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+  .product-card img {
+    display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+    border-radius: 12px; margin-bottom: 14px;
+  }
+  .badge { top: 34px; right: 34px; z-index: 2; }
+  .feature-card, .testimonial-card { border-radius: 16px; }
+  .feature-icon {
+    width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px; font-size: 1.8rem;
+    display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+  .faq-question:hover { color: var(--accent); }
+  #searchInput { border-radius: 999px; padding: 12px 20px; }
+  .modal-content { border-radius: 20px; }
+  .modal-content img { border-radius: 12px; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+
+  .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 6% 44px; }
+    .hero h1 { font-size: 2rem; }
+    .badge { top: 30px; right: 30px; }
+  }
 </style>
 </head>
 <body>
@@ -259,38 +336,38 @@
     <a href="#محصولات" class="btn" data-fa="مشاهده محصولات" data-en="View Products">مشاهده محصولات</a>
   </section>
 
-  <section class="products" id="محصولات">
+  <section class="products reveal" id="محصولات">
     <h2 data-fa="محصولات" data-en="Products">محصولات </h2>
     <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="جستجوی محصول..." data-fa-placeholder="جستجوی محصول..." data-en-placeholder="Search products...">
     <div class="product-grid">
 
       <div class="product-card" onclick="openModal('server')">
-        <img src="server.jpg" alt="سرور" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <img src="server.jpg" alt="سرور">
         <h3 data-fa="سرور" data-en="Server">سرور</h3>
         <p data-fa="نصب و راه اندازی" data-en="Installation and Setup">نصب و راه اندازی</p>
       </div>
 
       <div class="product-card" onclick="openModal('router')">
         <span class="badge" data-fa="پرفروش" data-en="Best Seller">پرفروش</span>
-        <img src="router.jpg" alt="روتر شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <img src="router.jpg" alt="روتر شبکه">
         <h3 data-fa="روتر" data-en="Router">روتر.</h3>
         <p data-fa="روتر بی سیم" data-en="Wireless Router">روتر بی سیم</p>
       </div>
 
       <div class="product-card" onclick="openModal('rack')">
-        <img src="rak1.jpg" alt="رک شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <img src="rak1.jpg" alt="رک شبکه">
         <h3 data-fa="رک شبکه" data-en="Network Rack">رک شبکه</h3>
         <p data-fa="ایستاده، دیواری و اوت دور" data-en="Standing, Wall-mounted and Outdoor">ایستاده .دیواری و اوت دور.</p>
       </div>
 
       <div class="product-card" onclick="openModal('cable')">
-        <img src="cable.jpg" alt="کابل شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <img src="cable.jpg" alt="کابل شبکه">
         <h3 data-fa="کابل شبکه" data-en="Network Cable">کابل شبکه</h3>
         <p data-fa="کابل مسی" data-en="Copper Cable">کابل مسی</p>
       </div>
 
       <div class="product-card" onclick="openModal('socket')">
-        <img src="soket.jpg" alt="سوکت شبکه" style="width:100%; border-radius:4px; margin-bottom:6px;">
+        <img src="soket.jpg" alt="سوکت شبکه">
         <h3 data-fa="سوکت شبکه" data-en="Network Socket">سوکت  شبکه</h3>
         <p data-fa="بسته 100 عددی" data-en="Pack of 100">بسته 100 عددی</p>
       </div>
@@ -298,7 +375,7 @@
     </div>
   </section>
 
-  <section class="features">
+  <section class="features reveal">
     <h2 data-fa="چرا ما؟" data-en="Why Choose Us?">چرا ما؟</h2>
     <div class="feature-grid">
 
@@ -329,7 +406,7 @@
     </div>
   </section>
 
-  <section class="testimonials">
+  <section class="testimonials reveal">
     <h2 data-fa="نظرات مشتریان" data-en="Customer Reviews">نظرات مشتریان</h2>
     <div class="testimonial-grid">
 
@@ -354,7 +431,7 @@
     </div>
   </section>
 
-  <section class="faq">
+  <section class="faq reveal">
     <h2 data-fa="سوالات متداول" data-en="Frequently Asked Questions">سوالات متداول</h2>
     <div class="faq-item">
       <div class="faq-question" onclick="toggleFaq(this)"><span data-fa="آیا برای نصب تجهیزات هم خدمات دارید؟" data-en="Do you also provide installation services?">آیا برای نصب تجهیزات هم خدمات دارید؟</span> <span>+</span></div>
@@ -377,7 +454,7 @@
   <div class="chat-fab">
     <div id="chatMenu" class="chat-menu">
       <a href="https://t.me/YOUR_TELEGRAM_ID" target="_blank" rel="noopener">✈️ <span data-fa="تلگرام" data-en="Telegram">تلگرام</span></a>
-      <a href="https://wa.me/989120000000" target="_blank" rel="noopener">📱 <span data-fa="واتس‌اپ" data-en="WhatsApp">واتس‌اپ</span></a>
+      <a href="https://wa.me/989023135666" target="_blank" rel="noopener">📱 <span data-fa="واتس‌اپ" data-en="WhatsApp">واتس‌اپ</span></a>
     </div>
     <button class="chat-toggle" onclick="toggleChat()" aria-label="chat">💬</button>
   </div>
@@ -504,6 +581,20 @@
     window.addEventListener('load', function() {
       document.getElementById('loader').classList.add('hidden');
     });
+
+    (function setupReveal() {
+      const items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function(i) { i.classList.add('visible'); });
+        return;
+      }
+      const io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -6% 0px' });
+      items.forEach(function(i) { io.observe(i); });
+    })();
   </script>
 
 </body>

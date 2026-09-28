@@ -180,6 +180,25 @@
   .back-to-top.show { display: flex; }
   .back-to-top:hover { background: #a85a3a; }
 
+  .chat-fab { position: fixed; bottom: 24px; right: 24px; z-index: 150; }
+  .chat-toggle {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: white;
+    border: none; font-size: 1.6rem; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    transition: transform 0.2s;
+  }
+  .chat-toggle:hover { transform: scale(1.08); }
+  .chat-menu {
+    display: none; position: absolute; bottom: 70px; right: 0; min-width: 170px;
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+    padding: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .chat-menu.open { display: block; }
+  .chat-menu a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px;
+    color: var(--ink); text-decoration: none; font-size: 0.95rem;
+  }
+  .chat-menu a:hover { background: rgba(128,128,128,0.15); }
+
   footer { padding: 30px 6%; background: var(--deep-teal); color: #cde; text-align: center; font-size: 0.9rem; }
 
   @media (max-width: 600px) {
@@ -355,6 +374,14 @@
     <p>BA.SH</p>
   </footer>
 
+  <div class="chat-fab">
+    <div id="chatMenu" class="chat-menu">
+      <a href="https://t.me/YOUR_TELEGRAM_ID" target="_blank" rel="noopener">✈️ <span data-fa="تلگرام" data-en="Telegram">تلگرام</span></a>
+      <a href="https://wa.me/989120000000" target="_blank" rel="noopener">📱 <span data-fa="واتس‌اپ" data-en="WhatsApp">واتس‌اپ</span></a>
+    </div>
+    <button class="chat-toggle" onclick="toggleChat()" aria-label="chat">💬</button>
+  </div>
+
   <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
 
   <div id="productModal" class="modal">
@@ -450,6 +477,16 @@
     function closeModal() {
       document.getElementById('productModal').classList.remove('open');
     }
+
+    function toggleChat() {
+      document.getElementById('chatMenu').classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.chat-fab')) {
+        document.getElementById('chatMenu').classList.remove('open');
+      }
+    });
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
